@@ -9,7 +9,7 @@ WEB_SITE="https://github.com/Tfonseca200"
 function monitorar_logs(){
 grep -E "fail()?|failed|Error|unauthorized|danied" /var/log/syslog | awk '{print $1, $2, $3, $4, $5}' > $LOG_DIR/$ARQ
 
-grep -E "fail()?|failed|Error|unauthorized|danied" /var/log/auth.log | awk '{print $1, $2, $3, $4, $5}' > $LOG_DIR/$ARQ_AUTH
+sudo grep -E "Invalid user|authentication failure|failed password|denied|fatal" /var/log/auth.log | awk '{print $1, $2, $3, $4, $5}' > $LOG_DIR/$ARQ_AUTH
 }
 
 
