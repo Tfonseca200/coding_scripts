@@ -4,6 +4,7 @@ LOG_DIR="LOG_SYSTEM_THI"
 ARQ="monitoramento_sistema_thCompany"
 ARQ_AUTH="monitoramento_logAuth"
 ARQ_MONITORAMENTO_DISCO='monitoramento_disco'
+ARQ_MONITORAMENTO_HARDWARE='monitoramento_hardware'
 WEB_SITE="https://github.com/Tfonseca200"
 
 
@@ -38,9 +39,19 @@ function vericar_conexao_webSite(){
 function monitorar_disco (){
 	echo "$(date)" >> $LOG_DIR/$ARQ_MONITORAMENTO_DISCO
 	df -h | grep -v "snap" |  awk '$5+0 > 30 { print $1 " esta com " $5 " de uso."}' >> $LOG_DIR/$ARQ_MONITORAMENTO_DISCO
-	
+
 	echo "Uso de disco no diretorio do usuario principal:" >> $LOG_DIR/$ARQ_MONITORAMENTO_DISCO
 	du -sh /home/thiago/ >> $LOG_DIR/$ARQ_MONITORAMENTO_DISCO
+
+}
+
+function monitorar_hardware(){
+	free -h | grep Mem | awk '{print "Memoria ram total: " $2 "|  Usada : " $3 "|  Livres: " $4}' >> $LOG_DIR/$ARQ_MONITORAMENTO_HARDWARE
+
+	top -bn1 | grep "Cpu(s)" | sed 's/.*, *\([0-9]*[.,][0-9]*\)\%* id.*/\1/' | awk '{print "Uso da CPU : " 100 - $1 "%"}' >> $LOG_DIR/$ARQ_MONITORAMENTO_HARDWARE
+	
+	echo "Operacoes de leitura e escrita: " >> $LOG_DIR/$ARQ_MONITORAMENTO_HARDWARE
+	iostat | grep -E "Devide |^dm-0|^sr0|^vda" | awk '{print "Device /e dados leitura e escrita: " $1, $2, $3, $4}' >> $LOG_DIR/$ARQ_MONITORAMENTO_HARDWARE
 
 }
 
@@ -50,6 +61,7 @@ function monitorar_all_sistema(){
 	verificar_conectividade_internet
 	vericar_conexao_webSite "$WEB_SITE"
 	monitorar_disco
+	monitorar_hardware
 }
 
 monitorar_all_sistema
