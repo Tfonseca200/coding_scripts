@@ -1,8 +1,8 @@
 #!/bin/bash
 
-DIRETORIO_MYAPP_LOGS="/home/thiago/myapp/logs"
-ARQUIVO_DIR="/home/thiago/myapp/logs-processados"
-TEMP_DIR="/home/thiago/myapp/logs-temp"
+DIRETORIO_MYAPP_LOGS="/home/thiago/coding_scripts/myapp/logs"
+ARQUIVO_DIR="/home/thiago/coding_scripts/myapp/logs-processados"
+TEMP_DIR="/home/thiago/coding_scripts/myapp/logs-temp"
 
 mkdir -p $ARQUIVO_DIR
 mkdir -p $TEMP_DIR
