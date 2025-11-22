@@ -18,7 +18,7 @@ função central, 'monitorar_all_sistema()'.
 - FUNÇÕES INCLUÍDAS:
   -  monitorar_logs              : Acompanha a atividade nos arquivos de log.
   -  verificar_conectividade_internet: Testa a conectividade via PING no DNS 8.8.8.8.
-  -  vericar_conexao_webSite     : Usa CURL para checar o status de um website (via $WEB_SITE).
+  -  vericar_conexao_webSite     : Usa CURL para checar o status de um website (via variável $WEB_SITE).
   -  monitorar_disco             : Relata o uso do disco usando DF e AWK.
   -  monitorar_hardware          : Relata o uso da memória (hardware) usando FREE e AWK.
 
