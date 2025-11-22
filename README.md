@@ -38,8 +38,8 @@ função central, 'monitorar_all_sistema()'.
 Este script é especializado na normalização e segurança de arquivos de log.
 
 - ETAPAS DE PROCESSAMENTO:
-  - Localização      : Usa FIND para identificar os diretórios e arquivos de log.
-  - Redação (REDACTED) : Usa SED para trocar palavras sensíveis por 'REDACTED'.
-  - Ordenação        : Usa SORT para organizar o conteúdo do arquivo.
-  - Desduplicação    : Usa UNIQ para remover linhas duplicadas.
-  - Classificação    : Usa IF/ELSE para verificar se o log é 'frontend' ou 'backend' com base no nome do arquivo.
+  - Localização      : FIND para identificar os diretórios e arquivos de log.
+  - Redação (REDACTED) : SED para trocar palavras sensíveis por 'REDACTED'.
+  - Ordenação        : SORT para organizar o conteúdo do arquivo.
+  - Desduplicação    : UNIQ para remover linhas duplicadas.
+  - Classificação    : IF/ELSE para verificar se o log é 'frontend' ou 'backend' com base no nome do arquivo.
